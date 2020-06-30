@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_one :detail, as: :detailable
   has_many :events, as: :eventable
   accepts_nested_attributes_for :detail, :events
+  validates :pseudo, length: { maximum: 30 }
+  validates :email, length: { maximum: 50 }
 end

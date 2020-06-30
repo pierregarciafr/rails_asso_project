@@ -1,0 +1,3 @@
+# pierre:
+#   email: pierre@gmail.com
+#   encrypted_password: User.digest('password')
