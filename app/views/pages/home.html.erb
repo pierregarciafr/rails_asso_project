@@ -1,2 +1,25 @@
 <h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<br>
+Aller sur mon Dashboard
+Echanger avec les utilisateurs
+<br>
+<h2>Liste des Assos</h2>
+<% @assos.each do |asso| %>
+  <dl>
+    <dt>Nom : <%= asso.name %></dt>
+    <dd>Description : <%= asso.detail.description %></dd>
+
+    <dt>Referent : <%= asso.user.pseudo %></dt>
+    <dd>Description referent: <%= asso.user.detail.description %></dd>
+    En savoir plus sur l'asso <br>
+
+    <% unless asso.events.empty? %>
+    Prochains événements
+    <% end %>
+    <% asso.events.each do |event| %>
+      <dt><%= event.event_name %></dt>
+      <dd>Description : <%= event.detail.description %></dd>
+    <% end %>
+  </dl>
+  <hr>
+<% end %>
