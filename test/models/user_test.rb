@@ -99,6 +99,24 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+  test "saving user should increase User count" do
+    assert_difference 'User.count', +1 do
+      @user.save
+    end
+  end
+
+  test "signing up should automatically signi in user" do
+  end
+
+
+
+  test "user should build an event" do
+  end
+
+  test "user should build a detail" do
+  end
+
+
 
   test "should destroy details and events when destroying user" do
   end
