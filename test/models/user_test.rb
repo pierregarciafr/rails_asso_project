@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-# self.use_instantiated_fixtures = true   # for l 24 to work
+  self.use_instantiated_fixtures = true
 
   def setup
     @user = User.new(pseudo: 'test', email:'test@gmail.com',
@@ -12,29 +12,29 @@ class UserTest < ActiveSupport::TestCase
                  )
   end
 
-  # test "should count 2 user fixtures" do
-  #   assert_equal 2, User.count
-  #   assert_equal 2, users.length
-  # end
+  test "should count 2 user fixtures" do
+    assert_equal 2, User.count
+    assert_equal 2, users.length
+  end
 
-  # test "shoul get the expected user fixture pseudo" do
-  #   assert_equal "michelchardou", users(:michel).pseudo
-  #   assert_equal "michelchardou", @michel.pseudo
-  # end
+  test "shoul get the expected user fixture pseudo" do
+    assert_equal "pierre", users(:pierre).pseudo
+    assert_equal "pierre", @pierre.pseudo
+  end
 
-  # test "should raise error if fixture name doesn't exist" do
-  #   assert_raise(StandardError) { users(:nicolas) }
-  # end
+  test "should raise error if fixture name doesn't exist" do
+    assert_raise(StandardError) { users(:nicolas) }
+  end
 
-  # test "should be valid" do
-  #   assert @michel.valid?
-  #   assert @user.valid?
-  # end
+  test "should be valid" do
+    assert @pierre.valid?
+    assert @user.valid?
+  end
 
-  # test "no pseudo should be valid" do
-  #   @michel.pseudo = ''
-  #   assert @michel.valid?
-  # end
+  test "no pseudo should be valid" do
+    @pierre.pseudo = ''
+    assert @pierre.valid?
+  end
 
   test "pseudo should not be too long" do
     @user.pseudo = 'a' * 31

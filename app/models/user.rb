@@ -9,4 +9,10 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :detail, :events
   validates :pseudo, length: { maximum: 30 }
   validates :email, length: { maximum: 50 }
+
+  def self.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+    BCrypt::Password.create(string, cost: cost)
+  end
+
 end
