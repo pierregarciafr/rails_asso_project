@@ -1,0 +1,12 @@
+<h1>Mon dashboard</h1>
+<p>Find me in app/views/users/show.html.erb</p>
+<h3><%= @user.pseudo %></h3>
+<p><%= @user.detail.description %></p>
+
+<dd>
+  <dt>Ses événements</dt>
+  <h4><%= @user.events.first.event_name %></h4>
+  <dl><%= @user.events.first.detail.description %></dl>
+</dd>
+
+<%= link_to 'Back', root_path  %>
