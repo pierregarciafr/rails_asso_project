@@ -1,0 +1,9 @@
+pierre:
+  email: pierre@gmail.com
+  encrypted_password: User.digest('password')
+  pseudo: pierre
+
+noemie:
+  email: noemie@gmail.com
+  encrypted_password: User.digest('password')
+  pseudo: noemie
