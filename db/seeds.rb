@@ -11,7 +11,7 @@ Asso.destroy_all
 User.destroy_all
 
 puts "create admin ."
-User.create(pseudo: 'Pierre', email: 'pierre@smart.com', password: 'password', password_confirmation: 'password')
+User.create(pseudo: 'Admin', email: 'admin@smart.com', password: 'password', password_confirmation: 'password', admin: true)
 
 print "create single users "
 (1..10).each do |i|
@@ -19,7 +19,7 @@ print "create single users "
   email = "single_user_#{i}@gmail.com"
   password = 'password'
   register = "#{i}12HJ3432IO#{i}"
-  user = User.new(pseudo: pseudo, email: email, password: password, password_confirmation: password)
+  user = User.new(pseudo: pseudo, email: email, password: password, password_confirmation: password) #, admin: false
   user.save
   print '.u'
   user.build_detail(description:"Le #{i}ème plus beau et plus fort ").save
@@ -41,7 +41,7 @@ print "create referent users + assos "
   password = 'password'
   register = "#{i}12HJ3432IO#{i}"
   name = "association_#{i}"
-  user = User.new(pseudo: pseudo, email: email, password: password, password_confirmation: password)
+  user = User.new(pseudo: pseudo, email: email, password: password, password_confirmation: password) # , admin: false
   user.save
   print '.u'
   user.build_detail(description:"Le #{i}ème associatif").save
