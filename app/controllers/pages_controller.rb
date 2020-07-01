@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def home
       @assos = Asso.all
+
   end
 end
