@@ -5,9 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts 'Dropping models'
+puts 'Interest'
+Interest.destroy_all
+puts 'Detail'
 Detail.destroy_all
+puts 'Event'
 Event.destroy_all
+puts 'Asso'
 Asso.destroy_all
+puts 'User'
 User.destroy_all
 
 puts "create admin ."
@@ -31,6 +38,11 @@ print "create single users "
     event.build_detail(description:'frisson frisson').save
     print 'd'
   end
+  Interest.create(user_id: user.id,
+                  couple_status: InterestCoupleStatus::COUPLE_STATUSES.sample,
+                  my_research: InterestMyResearch::MY_RESEARCHES.sample
+                  )
+  print 'i'
 end
 
 puts
@@ -59,5 +71,7 @@ print "create referent users + assos "
     print 'd'
   end
 end
+
+
 
 
