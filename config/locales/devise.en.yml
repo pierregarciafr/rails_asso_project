@@ -1,6 +1,11 @@
 # Additional translations at https://github.com/heartcombo/devise/wiki/I18n
 
 en:
+  pundit:
+    default: 'You cannot perform this action.'
+    post_policy:
+      update?: 'You cannot edit this post!'
+      create?: 'You cannot create posts!'
   devise:
     confirmations:
       confirmed: "Your email address has been successfully confirmed."

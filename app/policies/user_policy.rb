@@ -1,9 +1,9 @@
 class UserPolicy < ApplicationPolicy
   class Scope < Scope
       def resolve
-        if @user.admin == false
+        if user.admin == false
           scope.select{|u| u.assos.empty?}
-        elsif @user.admin == true
+        elsif user.admin == true
           scope.all
         end
       end
@@ -14,7 +14,6 @@ class UserPolicy < ApplicationPolicy
   end
 
   def index?
-    # raise
     !!user
   end
 
@@ -24,7 +23,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def create?
-    # record = user
+    record = user
   end
 
 end
