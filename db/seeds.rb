@@ -99,7 +99,8 @@ assos = Asso.all
 fields = Field.all
 (1..11).each do |asso_id|
   asso = assos[asso_id%11]
-  tag = Tag.new(asso:asso,field:fields.sample)
+  tag = Tag.create(asso:asso,field:fields.sample)
+  print '.'
 end
 
 

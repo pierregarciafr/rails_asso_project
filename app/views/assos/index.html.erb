@@ -1,14 +1,33 @@
-<h1>Assos#index</h1>
+<h1>Les Assos</h1>
+<br>
+<%= form_tag assos_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Search assos by tags"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+<br>
 <% @assos.each do |asso| %>
   <dl>
-    <dt>Nom : <%= asso.name.capitalize %></dt>
+    <dt>Association</dt>
+      <dd>Nom : <%= asso.name.capitalize %></dd>
     <dd>Description : <%= asso.detail.description %></dd>
-
-    <dt>Referent : <%= asso.user.pseudo %></dt>
+  </dl>
+  <dl>
+    <dt>Référent : <%= asso.user.pseudo %></dt>
     <dd>Description referent: <%= asso.user.detail.description %></dd>
-    <% if asso.events.empty? %>Cette association a des activités de prévues.<% end %><br>
+    <% if !asso.events.empty? %>Cette association a des activités de prévues.<% end %><br>
     <%= link_to 'Détails', asso_path(asso) %><br>
-
+  </dl>
+  <dl>
+    <dt>Tags</dt>
+      <%Tag.joins(:asso, :field).where(assos: {id:asso.id}).each do |tag| %>
+    <dd>
+        <%= tag.field.name %>
+    <dd>
+      <% end %>
   </dl>
   <hr>
 <% end %>

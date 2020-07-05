@@ -5,9 +5,14 @@ class AssosController < ApplicationController
   end
 
   def index
-    @assos = policy_scope(Asso)
+    policies = policy_scope(Asso)
     # authorize current_user
-    @users = policies.sort_by{|asso| asso.name}
+    if params[:query].present?
+      results = Tag.joins(:asso, :field).where(fields: {name: params[:query]})
+      @assos = results.map {|result| result.asso}
+    else
+      @assos = policies.sort_by {|asso| asso.name}
+    end
     @user = current_user
 
   end
