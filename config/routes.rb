@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'assos/show'
+  get 'assos/index'
+  get 'assos/new'
+  get 'assos/create'
+  get 'assos/edit'
+  get 'assos/update'
+  get 'assos/destroy'
   authenticate :user, lambda { |u| u.admin==true } do
     mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   end
