@@ -1,2 +1,14 @@
 <h1>Assos#index</h1>
-<p>Find me in app/views/assos/index.html.erb</p>
+<% @assos.each do |asso| %>
+  <dl>
+    <dt>Nom : <%= asso.name.capitalize %></dt>
+    <dd>Description : <%= asso.detail.description %></dd>
+
+    <dt>Referent : <%= asso.user.pseudo %></dt>
+    <dd>Description referent: <%= asso.user.detail.description %></dd>
+    <% if asso.events.empty? %>Cette association a des activités de prévues.<% end %><br>
+    <%= link_to 'Détails', asso_path(asso) %><br>
+
+  </dl>
+  <hr>
+<% end %>

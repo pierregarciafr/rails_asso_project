@@ -5,7 +5,7 @@ class AssosController < ApplicationController
   end
 
   def index
-    policies = policy_scope(Asso)# .reject{|asso| user.admin}
+    @assos = policy_scope(Asso)
     # authorize current_user
     @users = policies.sort_by{|asso| asso.name}
     @user = current_user
