@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 puts 'Dropping models'
+puts 'Tags'
+Tag.destroy_all
+puts 'Field'
+Field.destroy_all
 puts 'Interest'
 Interest.destroy_all
 puts 'Detail'
@@ -63,6 +67,7 @@ print "create referent users + assos "
   print 'a'
   asso.build_detail(description:'Panou panou').save
   print 'd'
+
   if i.even?
     event= asso.events.build(event_name:"À la queue leu leu_#{i}")
     event.save
@@ -71,6 +76,7 @@ print "create referent users + assos "
     print 'd'
   end
 end
+puts 'create followers relationships'
 array_of_users = User.all[1..10]
 array_of_users[0].follow(array_of_users[5])
 array_of_users[0].follow(array_of_users[8])
@@ -83,3 +89,20 @@ array_of_users[3].follow(array_of_users[2])
 array_of_users[4].follow(array_of_users[2])
 array_of_users[4].follow(array_of_users[9])
 array_of_users[5].follow(array_of_users[8])
+
+puts 'create fields'
+%w[loisirs humanitaire action_sociale soirées jeux sports prévention droits culture].each do |field_name|
+  Field.create(name: field_name)
+end
+puts 'create tags'
+assos = Asso.all
+fields = Field.all
+(1..11).each do |asso_id|
+  asso = assos[asso_id%11]
+  tag = Tag.new(asso:asso,field:fields.sample)
+end
+
+
+
+
+

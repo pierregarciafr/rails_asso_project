@@ -4,6 +4,7 @@ class RelationshipsController < ApplicationController
     user = User.find(params[:followed_id])
     authorize current_user
     current_user.follow(user)
+    flash[:success] = "You are now following #{user}"
     redirect_to user
   end
 
@@ -11,6 +12,7 @@ class RelationshipsController < ApplicationController
     user = Relationship.find(params[:id]).followed
     authorize current_user
     current_user.unfollow(user)
+    flash[:success] = "You have succesfully unfollowed #{user}"
     redirect_to user
   end
 end
