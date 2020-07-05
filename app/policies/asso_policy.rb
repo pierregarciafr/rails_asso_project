@@ -7,6 +7,7 @@ class AssoPolicy < ApplicationPolicy
 
   def index
     true
+    raise
   end
 
   def show
