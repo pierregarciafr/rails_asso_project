@@ -50,6 +50,7 @@ class User < ApplicationRecord
     !assos.empty?
   end
 
+
   # def self.without_asso
   # end
 end

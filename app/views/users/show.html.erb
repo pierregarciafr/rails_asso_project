@@ -24,4 +24,19 @@
   </dd>
 <% end %>
 
+<dd>
+  <dt>Followers</dt>
+  <dl>Suit <%= @user.following.count %></dl>
+  <dl>Suivi par <%= @user.followers.count %></dl>
+</dd>
+  <% unless current_user == @user %>
+    <% if current_user.following?(@user) %>
+      <%= render 'unfollow' %>
+    <% else %>
+
+      <%= render 'follow' %>
+    <% end %>
+  <% end %>
+<br>
+
 <%= link_to 'Back', users_path  %>
