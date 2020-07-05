@@ -6,6 +6,14 @@ class User < ApplicationRecord
   has_many :assos
   has_one :detail, as: :detailable
   has_many :events, as: :eventable
+  has_many :active_relationships, class_name: 'Relationship',
+                                  foreign_key: 'follower_id',
+                                  dependent: :destroy
+
+  has_many :passive_relationships, class_name: 'Relationship',
+                                   foreign_key: 'followed_id',
+                                   dependent: :destroy
+
   accepts_nested_attributes_for :detail, :events
   validates :pseudo, length: { maximum: 30 }
   validates :email, length: { maximum: 50 }
