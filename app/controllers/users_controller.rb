@@ -9,7 +9,12 @@ class UsersController < ApplicationController
   def index
     policies = policy_scope(User).reject{|user| user.admin}
     # authorize current_user
-    @users = policies.sort_by{|u| u.id}
+    if params[:query].present?
+      @interests = Interest.where(my_research: params[:query])
+      @users = @interests.map {|interest| interest.user }
+    else
+      @users = policies.sort_by{|u| u.id}
+    end
     @user = current_user
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_05_143204) do
+ActiveRecord::Schema.define(version: 2020_07_05_202517) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,12 @@ ActiveRecord::Schema.define(version: 2020_07_05_143204) do
     t.index ["eventable_type", "eventable_id"], name: "index_events_on_eventable_type_and_eventable_id"
   end
 
+  create_table "fields", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "interests", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.integer "couple_status"
@@ -61,6 +67,16 @@ ActiveRecord::Schema.define(version: 2020_07_05_143204) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.bigint "asso_id", null: false
+    t.bigint "field_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["asso_id", "field_id"], name: "index_tags_on_asso_id_and_field_id", unique: true
+    t.index ["asso_id"], name: "index_tags_on_asso_id"
+    t.index ["field_id"], name: "index_tags_on_field_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -77,4 +93,6 @@ ActiveRecord::Schema.define(version: 2020_07_05_143204) do
 
   add_foreign_key "assos", "users"
   add_foreign_key "interests", "users"
+  add_foreign_key "tags", "assos"
+  add_foreign_key "tags", "fields"
 end

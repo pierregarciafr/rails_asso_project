@@ -1,6 +1,15 @@
 
 <h1>Users</h1>
 <br>
+<%= form_tag users_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Search users by interest"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+<br>
 <h2>on <%= @user.pseudo %> 's request.</h2>
 <br>
 <% @users.each do |user| %>
