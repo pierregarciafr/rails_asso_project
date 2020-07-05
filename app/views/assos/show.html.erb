@@ -1,0 +1,21 @@
+<h1><%= @asso.name.capitalize %></h1>
+
+  <dl>
+    <dt>Nom : <%= @asso.name.capitalize %></dt>
+    <dd>Description : <%= @asso.detail.description %></dd>
+  </dl>
+  <dl>
+    <dt>Referent : <%= @asso.user.pseudo %></dt>
+    <dd>Description referent: <%= @asso.user.detail.description %></dd>
+  </dl>
+
+    <% unless @asso.events.empty? %>
+    Prochains événements
+    <% end %>
+    <% @asso.events.each do |event| %>
+      <dt><%= event.event_name %></dt>
+      <dd>Description : <%= event.detail.description %></dd>
+    <% end %>
+  </dl>
+
+    <%= link_to 'Back', assos_path %>
