@@ -23,7 +23,11 @@ class UserPolicy < ApplicationPolicy
   end
 
   def create?
-    # record == user
+    record == user
+  end
+
+  def destroy?
+    record == user
   end
 
 end

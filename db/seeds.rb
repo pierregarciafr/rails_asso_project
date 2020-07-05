@@ -71,7 +71,15 @@ print "create referent users + assos "
     print 'd'
   end
 end
-
-
-
-
+array_of_users = User.all[1..10]
+array_of_users[0].follow(array_of_users[5])
+array_of_users[0].follow(array_of_users[8])
+array_of_users[1].follow(array_of_users[3])
+array_of_users[1].follow(array_of_users[7])
+array_of_users[2].follow(array_of_users[3])
+array_of_users[2].follow(array_of_users[6])
+array_of_users[3].follow(array_of_users[0])
+array_of_users[3].follow(array_of_users[2])
+array_of_users[4].follow(array_of_users[2])
+array_of_users[4].follow(array_of_users[9])
+array_of_users[5].follow(array_of_users[8])

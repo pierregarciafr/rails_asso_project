@@ -1,8 +1,9 @@
 <h1>Liste des Assos</h1>
 <br>
 <% if user_signed_in? %>
-  <%= link_to 'Mon Dashboard', user_path(current_user) %>
-  <%= link_to 'Echanger avec les utilisateurs', users_path %>
+  <%= link_to 'Mon Dashboard', user_path(current_user) %><br>
+  <%= link_to 'Voir les utilisateurs', users_path %>
+
 <% end %>
 <br>
 <% @assos.each do |asso| %>
