@@ -2,7 +2,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    authorize @user
+    @interest = Interest.where(user: @user)[0]
+    authorize current_user
   end
 
   def index

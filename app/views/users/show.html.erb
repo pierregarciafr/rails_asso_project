@@ -1,12 +1,27 @@
-<h1>Mon dashboard</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-<h3><%= @user.pseudo %></h3>
-<p><%= @user.detail.description %></p>
+<h1>Profil de <%= @user.pseudo %></h1>
 
 <dd>
-  <dt>Ses événements</dt>
-  <h4><%= @user.events.first.event_name %></h4>
-  <dl><%= @user.events.first.detail.description %></dl>
+  <dt>Description</dt>
+  <dl><%= @user.detail.description %></dl>
 </dd>
 
-<%= link_to 'Back', root_path  %>
+<% if @interest %>
+<dd>
+  <dt>Statut</dt>
+  <dl><%= @interest.couple_status %></dl>
+</dd>
+<dd>
+  <dt>Recherche</dt>
+  <dl><%= @interest.my_research %></dl>
+</dd>
+<% end %>
+
+<% unless @user.events.empty? %>
+<h3>Les événements de <%= @user.pseudo %></h3>
+  <dd>
+    <dt><%= @user.events.first.event_name %></dt>
+    <dl><%= @user.events.first.detail.description %></dl>
+  </dd>
+<% end %>
+
+<%= link_to 'Back', users_path  %>
