@@ -42,4 +42,14 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  def has_event?
+    !events.empty?
+  end
+
+  def has_asso?
+    !assos.empty?
+  end
+
+  # def self.without_asso
+  # end
 end
