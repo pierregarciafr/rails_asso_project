@@ -12,10 +12,4 @@
 <br>
 <h2>on <%= @user.pseudo %> 's request.</h2>
 <br>
-<% @users.each do |user| %>
-  <b><%= user.pseudo %></b><br>
-  <%= user.email %><br>
-  <%= user.detail.description %><br>
-  <%= link_to 'Details', user_path(user)  %>
-  <hr>
-<% end %>
+<%= render 'card' %>

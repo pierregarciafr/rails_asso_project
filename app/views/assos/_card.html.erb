@@ -1,0 +1,22 @@
+<% @assos.each do |asso| %>
+  <dl>
+    <dt>Association</dt>
+      <dd>Nom : <%= asso.name.capitalize %></dd>
+    <dd>Description : <%= asso.detail.description %></dd>
+  </dl>
+  <dl>
+    <dt>Référent : <%= asso.user.pseudo %></dt>
+    <dd>Description referent: <%= asso.user.detail.description %></dd>
+    <% if !asso.events.empty? %>Cette association a des activités de prévues.<% end %><br>
+    <%= link_to 'Détails', asso_path(asso) %><br>
+  </dl>
+  <dl>
+    <dt>Tags</dt>
+      <%Tag.joins(:asso, :field).where(assos: {id:asso.id}).each do |tag| %>
+    <dd>
+        <%= tag.field.name %>
+    <dd>
+      <% end %>
+  </dl>
+  <hr>
+<% end %>
