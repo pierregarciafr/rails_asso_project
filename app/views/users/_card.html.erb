@@ -1,0 +1,7 @@
+<% @users.each do |user| %>
+  <b><%= user.pseudo %></b><br>
+  <%= user.email %><br>
+  <%= user.detail.description %><br>
+  <%= link_to 'Details', user_path(user)  %>
+  <hr>
+<% end %>
